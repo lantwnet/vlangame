@@ -198,6 +198,7 @@ pub async fn start_dev_threads(
     flume::Sender<BytesMut>,
     flume::Receiver<(u64, BytesMut)>,
     IpRelease,
+    Arc<WinDivert<NetworkLayer>>,
 )> {
     let net = Ipv4Net::new_assert(ip, mask);
     let (s, receiver) = flume::bounded(1024);
@@ -249,10 +250,11 @@ pub async fn start_dev_threads(
             recv(divert, ip, sender);
         });
     }
+    let divert_send = divert.clone();
     thread::spawn(move || {
-        send(divert, if_index, mac, receiver);
+        send(divert_send, if_index, mac, receiver);
     });
-    Ok((s, r, ip_release))
+    Ok((s, r, ip_release, divert))
 }
 
 pub fn recv(
