@@ -1,0 +1,11 @@
+[package]
+name = "common"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+ring = { version = "0.17"}
+anyhow = "1.0.102"
+base64 = "0.22.1"
+rand = "0.10"

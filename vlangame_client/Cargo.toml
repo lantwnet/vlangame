@@ -1,0 +1,36 @@
+[package]
+name = "vlangame_client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+common = {path = "../common"}
+
+tun-rs = { version = "2.8", features = ["async_tokio"] }
+tokio = { version = "1.49", features = ["full"] }
+tokio-util = { version = "0.7", features = ["full"] }
+bytes = "1"
+pnet_packet = "0.35.0"
+rust-p2p-core = { git = "https://github.com/rustp2p/rustp2p" }
+dashmap = "6.1.0"
+anyhow = "1.0.98"
+futures = "0.3.31"
+log = "0.4.27"
+
+serde_json = "1.0"
+parking_lot = "0.12.4"
+
+lru = "0.16.1"
+
+flume = "0.12"
+ipnet = "2.11.0"
+route_manager = "0.2"
+ipconfig = "0.3"
+netconfig-rs = "0.1"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winreg = "0.55.0"
+windivert = { version = "0.6.0", features = ["vendored"] }
+
+[target.'cfg(windows)'.build-dependencies]
+thunk-rs = { version = "0.3.3", features = ["win7"] }

@@ -1,0 +1,26 @@
+[package]
+name = "vlangame"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+vlangame_client = {path = "vlangame_client"}
+vlangame_server = {path = "vlangame_server"}
+
+clap = { version = "4.5.40", features = ["derive"] }
+tokio = { version = "1.49", features = ["full"] }
+bytes = "1"
+env_logger = "0.11.8"
+log = "0.4.29"
+flume = "0.12"
+
+[workspace]
+members = ["common","vlangame_client", "vlangame_server"]
+
+[[bin]]
+name = "client"
+path = "src/client.rs"
+
+[[bin]]
+name = "server"
+path = "src/server.rs"

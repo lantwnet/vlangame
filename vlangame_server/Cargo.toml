@@ -1,0 +1,17 @@
+[package]
+name = "vlangame_server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+common = {path = "../common"}
+
+tokio = { version = "1.45.1", features = ["full"] }
+tokio-util = { version = "0.7.15", features = ["full"] }
+bytes = "1.10.1"
+dashmap = "6.1.0"
+anyhow = "1.0.98"
+futures = "0.3.31"
+log = "0.4.27"
+parking_lot = "0.12.4"
+rand = "0.10"
